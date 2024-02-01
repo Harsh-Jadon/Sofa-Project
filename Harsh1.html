@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open HTML2 and WebGL</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2 {
+            padding-left: 10px;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> <img src="Wriver logo.png" > </h1>
+    
+    <!-- Input field to enter a name -->
+    <h2> Arcus Sofa
+        FIUM COLLECTION </h2>
+        <h3>click on the image below</h3>
+
+    <!-- Image to open HTML2 with the entered name -->
+    <img src="Arcus-Sofa-01-840x560.jpg" alt="Sofa" onclick="openHTML2()">
+
+    <!-- JavaScript to open HTML2 with the entered name -->
+    <script>
+        function openHTML2() {
+            window.open('UnityBuildFile.html?name=' + '_blank');
+        }
+    </script>
+
+</body>
+</html>
