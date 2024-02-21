@@ -11,15 +11,40 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            margin: 20;
+        }
+        h1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 20px;
+        }
+        h1 img {
+            width: 25%;
+            height: auto;
+            padding-left: 30px;
+
         }
         h2 {
             padding-left: 10px;
         }
         img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 500px;
+            height: auto;
             cursor: pointer;
+            margin: 10px;
+        }
+        .images {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .title {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
@@ -27,18 +52,26 @@
 
     <h1> <img src="Wriver logo.png" > </h1>
     
-    <!-- Input field to enter a name -->
-    <h2> Arcus Sofa
-        FIUM COLLECTION </h2>
-        <h3>click on the image below</h3>
 
-    <!-- Image to open HTML2 with the entered name -->
-    <img src="Arcus-Sofa-01-840x560.jpg" alt="Sofa" onclick="openHTML2()">
+    <!-- Images to open HTML2 with the entered name -->
+    <div class="images">
+        <div>
+            <img src="Arcus-Sofa-01-840x560.jpg" alt="Sofa" onclick="PlumSofa()" style="margin-right: 30px;">
+            <div class="title">Arcus Sofa<br>FIUM COLLECTION</div>
+        </div>
+        <div>
+            <img src="Cleave-300-Side-Table-03.jpg" alt="Table" onclick="Table()">
+            <div class="title">Cleave 300 Side Table<br>FLEXUS COLLECTION</div>
+        </div>
+    </div>
 
     <!-- JavaScript to open HTML2 with the entered name -->
     <script>
-        function openHTML2() {
-            window.open('UnityBuildFile.html?name=' + '_blank');
+        function PlumSofa() {
+            window.open('PlumSofa.html');
+        }
+        function Table() {
+            window.open('Table - Copy.html');
         }
     </script>
 

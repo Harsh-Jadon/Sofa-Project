@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Model Viewer Example</title>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+
+    }
+
+    model-viewer {
+        width: 80vw;
+        height: 80vh;
+    }
+
+    button {
+        margin: 10px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    img {
+        pointer-events: none;
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+        /*---- Stone/Tiles ----- */
+        /* Adjust height as needed */
+    }
+
+    .details {
+        text-align: left;
+        width: 80%;
+        margin-left:  20px;
+    }
+    .material-categories {
+  display: flex;
+  justify-content: space-between;
+}
+
+.material-category {
+  flex: 1;
+}
+</style>
+
+<body style="margin: 0px; overflow: hidden; " >
+  <div class="details">
+    <h3>Cleave 300</h3>
+    <p>Cleave is a series of sleek tables where the metal legs intersect with the solid stone block and branch into two parts at same or different levels forming the table top. The stone block acts as an anchor, while the riveted metal sheets fasten to it.</p>
+
+    <strong style="margin-left: 0px;">Details</strong><br>
+    Seat - Upholstered<br>
+    Backrest - Upholstered<br>
+    Skirting - In wood<br>
+    Floor to seat height - 400 mm<br>
+</div>
+
+        <model-viewer style="margin-right: 5px;" id="Cleave300" src="CLEAVE300.glb" alt="A 3D model" auto-rotate camera-controls interaction-prompt> 
+        </model-viewer>
+        <model-viewer id="Cleave300" src="Cleave300.glb" alt="A 3D model" auto-rotate camera-controls interaction-prompt 
+        skybox-image="plan.jpg" shadow-intensity="5"></model-viewer>
+
+        <div class="controls">
+            <div>
+                <p class="material-categories">
+                    <span class="material-category">
+                      <strong>Stone/Tiles</strong>
+                    </span>
+                    <span class="material-category">
+                      <strong style="margin-left: 80px;">Metal</strong>
+                    </span>
+                  </p>
+              <button style="margin-left: -5px;" id="ZuraTravertine" value="Zura Travertine (Honed).jpg"><img src="Zura Travertine (Honed).jpg"></button>
+              <button style="margin-left: -5px;" id="WhiteCarraraPolished" value="White Carrara (Polished).jpg"><img src="White Carrara (Polished).jpg"></button>
+              <button style="margin-left: -5px;" id="EbonyTravertineHoned" value="Ebony Travertine (Honed).jpg"><img src="Ebony Travertine (Honed).jpg"></button>
+              <button style="margin-left: -5px;" id="BlackMarquinaPolished" value="Black Marquina (Polished).jpg"><img src="Black Marquina (Polished).jpg"></button>
+                
+              <button style="margin-left: 25px;" id="CopperAntiqueWrinkled" value="Copper Antique Wrinkled.jpg"><img src="Copper Antique Wrinkled.jpg"></button>
+              <button style="margin-left: -5px;" id="BlackNickelAntiqueWrinkled" value="Black Nickel Antique Wrinkled.jpg"><img src="Black Nickel Antique Wrinkled.jpg"></button>
+              <button style="margin-left: -5px;" id="BrassAntiqueWrinkled" value="Brass Antique Wrinkled.jpg"><img src="Brass Antique Wrinkled.jpg"></button> 
+            </div>
+        </div>
+        
+
+<script>
+    const modelViewerTexture1 = document.querySelector("model-viewer#Cleave300"); 
+
+    modelViewerTexture1.addEventListener("load", () => {
+        const material = modelViewerTexture1.model.materials[0];
+        const material1 = modelViewerTexture1.model.materials[1];
+
+        const createAndApplyTexture = async (channel, value) => {
+            const texture = await modelViewerTexture1.createTexture(value);
+            if (channel.includes('base') || channel.includes('metallic')) {
+                material.pbrMetallicRoughness[channel].setTexture(texture);
+            } else {
+                material[channel].setTexture(texture);
+            }
+        }
+
+        const createAndApplyTexture1 = async (channel, value) => {
+            const texture = await modelViewerTexture1.createTexture(value);
+            if (channel.includes('base') || channel.includes('metallic')) {
+                material1.pbrMetallicRoughness[channel].setTexture(texture);
+            } else {
+                material1[channel].setTexture(texture);
+            }
+        }
+                /*---- Stone/Tiles ----- */
+        document.querySelector('#CopperAntiqueWrinkled').addEventListener('click', (event) => {
+            createAndApplyTexture1('baseColorTexture', event.currentTarget.value);
+        });
+
+        document.querySelector('#BlackNickelAntiqueWrinkled').addEventListener('click', (event) => {
+            createAndApplyTexture1('baseColorTexture', event.currentTarget.value);
+        });
+        document.querySelector('#BrassAntiqueWrinkled').addEventListener('click', (event) => {
+            createAndApplyTexture1('baseColorTexture', event.currentTarget.value);
+        });
+        /*---- Metal ----- */
+        document.querySelector('#ZuraTravertine').addEventListener('click', (event) => {
+            createAndApplyTexture('baseColorTexture', event.currentTarget.value);
+        });
+
+        document.querySelector('#WhiteCarraraPolished').addEventListener('click', (event) => {
+            createAndApplyTexture('baseColorTexture', event.currentTarget.value);
+        });
+        document.querySelector('#EbonyTravertineHoned').addEventListener('click', (event) => {
+            createAndApplyTexture('baseColorTexture', event.currentTarget.value);
+        });
+
+        document.querySelector('#BlackMarquinaPolished').addEventListener('click', (event) => {
+            createAndApplyTexture('baseColorTexture', event.currentTarget.value);
+        });
+    });
+</script>
+
+
+</body>
+</html>
